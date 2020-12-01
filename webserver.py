@@ -23,13 +23,18 @@ def close_connection(exception):
     if db is not None:
         db.close()
 
+# Prints a message to a user
+
 
 @app.route('/greet/<string:name>')
 def hello(name):
     return f'Message in a bottle for {name}!'
 
 
-@app.route('/calculate/<int:num>')
+# Calculates the cubic value of a number
+
+
+@app.route('/cube/<int:num>')
 def calculate(num):
     db = get_db()
     result = db.execute('select ? * ? * ?', (num, num, num)).fetchone()[0]
